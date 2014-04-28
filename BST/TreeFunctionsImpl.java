@@ -274,6 +274,62 @@ public class TreeFunctionsImpl implements TreeFunctions{
 		b.left = a;
 		
 	}
+	
+	public static void printInRange(Node root, int min, int max){
+		if(root == null) return;
+		
+		if(root.data >= min && root.data <= max){
+			System.out.println(root.data);
+			printInRange(root.left, min, max);
+			printInRange(root.right, min, max);
+		} else if(root.data<min){
+			printInRange(root.right, min, max);
+		} else if(root.data>max){
+			printInRange(root.left, min, max);
+		}
+	}
+	
+	public static void printSpiral(Node root){
+		if(root == null) return;
+		
+		Stack<Node> stack1 = new Stack<Node>();
+		Stack<Node> stack2 = new Stack<Node>();
+		
+		stack1.push(root);
+		while(!stack1.isEmpty() || !stack2.isEmpty()){
+			
+			while(!stack1.isEmpty()){
+				Node curr = stack1.pop();
+				System.out.print(curr.data);
+				System.out.print(",");
+				if(curr.left != null)
+					stack2.push(curr.left);
+				if(curr.right != null)
+					stack2.push(curr.right);
+			}
+			System.out.println("");
+			while(!stack2.isEmpty()){
+				Node curr = stack2.pop();
+				System.out.print(curr.data);
+				System.out.print(",");
+				if(curr.right != null)
+					stack1.push(curr.right);
+				if(curr.left != null)
+					stack1.push(curr.left);
+			}
+			System.out.println("");
+		}
+	}
+	
+		public static int sizeTree(Node root){
+		if(root==null) return 0;
+		return (sizeTree(root.left)+sizeTree(root.right)+1);
+	}
+	
+	public static int heightTree(Node root){
+		if(root==null) return 0;
+		return (Math.max(heightTree(root.left), heightTree(root.right))+1);
+	}
 
 
 	
