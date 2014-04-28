@@ -1,9 +1,7 @@
 package com.ck.tree.service;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedList;
-import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Stack;
 
@@ -331,7 +329,63 @@ public class TreeFunctionsImpl implements TreeFunctions{
 		return (Math.max(heightTree(root.left), heightTree(root.right))+1);
 	}
 
+	@Override
+	public void traverseSpiral(TreeNode root){
+		int height = getTreeHeight(root);
+		boolean alt = false;
+		for(int i = 1; i <= height; i++){
+			printSpiralLevel(root,i,alt);
+			alt = !alt;
+		}
+		
+	}
 
-	
+
+
+
+	private void printSpiralLevel(TreeNode root, int level, boolean alt) {
+		if(root == null)
+	        return;
+	    if(level == 1)
+	        System.out.print(root.data);
+	    else if (level > 1)
+	    {
+	        if(alt)
+	        {
+	            printSpiralLevel(root.left, level-1, alt);
+	            printSpiralLevel(root.right, level-1, alt);
+	        }
+	        else
+	        {
+	            printSpiralLevel(root.right, level-1, alt);
+	            printSpiralLevel(root.left, level-1, alt);
+	        }
+	    }		
+	}
+
+
+
+	@Override
+	public int getTreeHeight(TreeNode root) {
+		if(root == null ) return 0;
+		return(1+Math.max(getTreeHeight(root.left), getTreeHeight(root.right)));
+	}
+
+	@Override
+	public TreeNode deleteLeaves(TreeNode root){
+		
+		if(root == null) return null;
+		
+		if(root.left==null && root.right == null){
+			root = null;
+			return null;	//** returning null after assigning root as null
+		}else{
+			
+			// assigning return values of recursive calls to left and right
+			root.left = deleteLeaves(root.left);
+			root.right = deleteLeaves(root.right);
+		}
+		return root;	// return root;
+	}
 
 }
