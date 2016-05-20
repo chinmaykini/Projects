@@ -1,8 +1,7 @@
-package com.ck.tree.service;
+package BST;
 
 import java.util.ArrayList;
 
-import com.ck.tree.model.TreeNode;
 
 public interface TreeFunctions {
 	
