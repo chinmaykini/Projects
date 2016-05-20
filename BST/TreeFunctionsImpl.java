@@ -1,11 +1,8 @@
-package com.ck.tree.service;
-
-import java.util.ArrayList;
+package BST;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
-
-import com.ck.tree.model.TreeNode;
+import java.util.ArrayList;
 
 public class TreeFunctionsImpl implements TreeFunctions {
 
@@ -301,7 +298,7 @@ public class TreeFunctionsImpl implements TreeFunctions {
 
 	}
 	
-	public static void printInRange(Node root, int min, int max){
+	public static void printInRange(TreeNode root, int min, int max){
 		if(root == null) return;
 		
 		if(root.data >= min && root.data <= max){
@@ -315,17 +312,17 @@ public class TreeFunctionsImpl implements TreeFunctions {
 		}
 	}
 	
-	public static void printSpiral(Node root){
+	public static void printSpiral(TreeNode root){
 		if(root == null) return;
 		
-		Stack<Node> stack1 = new Stack<Node>();
-		Stack<Node> stack2 = new Stack<Node>();
+		Stack<TreeNode> stack1 = new Stack<TreeNode>();
+		Stack<TreeNode> stack2 = new Stack<TreeNode>();
 		
 		stack1.push(root);
 		while(!stack1.isEmpty() || !stack2.isEmpty()){
 			
 			while(!stack1.isEmpty()){
-				Node curr = stack1.pop();
+				TreeNode curr = stack1.pop();
 				System.out.print(curr.data);
 				System.out.print(",");
 				if(curr.left != null)
@@ -335,7 +332,7 @@ public class TreeFunctionsImpl implements TreeFunctions {
 			}
 			System.out.println("");
 			while(!stack2.isEmpty()){
-				Node curr = stack2.pop();
+				TreeNode curr = stack2.pop();
 				System.out.print(curr.data);
 				System.out.print(",");
 				if(curr.right != null)
@@ -347,12 +344,9 @@ public class TreeFunctionsImpl implements TreeFunctions {
 		}
 	}
 	
-		public static int sizeTree(Node root){
-		if(root==null) return 0;
-		return (sizeTree(root.left)+sizeTree(root.right)+1);
-	}
+
 	
-	public static int heightTree(Node root){
+	public static int heightTree(TreeNode root){
 		if(root==null) return 0;
 		return (Math.max(heightTree(root.left), heightTree(root.right))+1);
 	}
@@ -424,6 +418,7 @@ public class TreeFunctionsImpl implements TreeFunctions {
 			return 0;
 		return (sizeTree(root.left) + sizeTree(root.right) + 1);
 	}
+
 
 	@Override
 	public int getTreeHeight(TreeNode root) {
