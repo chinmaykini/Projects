@@ -1,9 +1,8 @@
-package com.ck.list.single.service;
+package LinkedLists;
 
 import java.util.Collections;
 import java.util.PriorityQueue;
 
-import com.ck.list.single.model.SingleListNode;
 
 public class SingleLinkedListFunctionsImpl implements SingleLinkedListFunctions {
 

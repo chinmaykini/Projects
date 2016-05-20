@@ -1,6 +1,6 @@
-package com.ck.linkedlist;
+package LinkedLists;
 
-import com.ck.tree.model.TreeNode;
+import BST.*;;
 
 public class LinkedListUtils {
 	
